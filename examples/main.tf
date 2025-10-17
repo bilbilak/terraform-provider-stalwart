@@ -4,7 +4,7 @@ terraform {
   required_providers {
     stalwart = {
       source  = "bilbilak/stalwart"
-      version = "~> 1.0"
+      version = "~> 0.1"
     }
   }
 }
