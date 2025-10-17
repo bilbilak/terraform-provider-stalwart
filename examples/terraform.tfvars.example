@@ -1,0 +1,9 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and fill in your actual values
+
+server_hostname = "mail.example.com"
+api_key         = "your-stalwart-api-key-here"
+
+john_password  = "secure-password-1"
+jane_password  = "secure-password-2"
+admin_password = "secure-admin-password"
