@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: go-mod-tidy
+        name: go mod tidy
+        entry: bash -c "direnv exec . go mod tidy && git add go.mod go.sum"
+        language: system
+        pass_filenames: false
+        stages: ['pre-commit']
