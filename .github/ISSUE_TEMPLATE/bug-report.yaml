@@ -1,0 +1,47 @@
+name: '🐞 Bug Report'
+description: File a bug report
+title: '🐞 [BUG]: '
+labels: ['malfunction', 'triage']
+assignees:
+  - 4r7if3x
+body:
+  - type: markdown
+    attributes:
+      value: Your diligent report makes a difference! Your input help us identify and address malfunctions in our product.
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
+      options: [
+        '0.1.0'
+      ]
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's the problem?
+      description: Please tell us what did you expect to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Relevant screenshots
+      placeholder: |
+        ![](https://i.imgur.com/screenshot_1.png)
+        ![](https://i.imgur.com/screenshot_2.png)
+        ![](https://i.imgur.com/screenshot_3.png)
+        ...
+      description: 'Please [upload](https://imgur.com/upload) any relevant screenshots and embed them here.'
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: 'Before submitting this issue, you must read our [Code of Conduct](https://github.com/bilbilak/.github/blob/main/docs/CODE_OF_CONDUCT.md).'
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
