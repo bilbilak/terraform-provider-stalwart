@@ -1,0 +1,14 @@
+# Dev Tools
+/.idea/
+/.vscode/
+/.claude/
+
+# Build Artifacts
+/terraform-provider-stalwart*
+
+# Misc.
+.DS_Store
+Thumbs.db
+desktop.ini
+*.sw?
+*~
