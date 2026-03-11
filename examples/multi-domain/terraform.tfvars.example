@@ -1,0 +1,30 @@
+stalwart_endpoint = "https://mail.example.com/api"
+# stalwart_token is best passed via: export TF_VAR_stalwart_token="..."
+# or STALWART_TOKEN env var
+
+domains = {
+  biz1 = "company1.com"
+  biz2 = "company2.com"
+}
+
+groups = {
+  "info-biz1" = {
+    primary_email = "info@company1.com"
+    aliases       = ["hello@company1.com"]
+  }
+  "info-biz2" = {
+    primary_email = "info@company2.com"
+    aliases       = ["hello@company2.com"]
+  }
+}
+
+# users is marked sensitive — pass via env var to avoid it appearing in plan output:
+# export TF_VAR_users='{"sam":{"password":"...","primary_email":"sam@company1.com","aliases":["sam@company2.com"],"member_of":["info-biz1","info-biz2"]}}'
+users = {
+  sam = {
+    password      = "changeme"
+    primary_email = "sam@company1.com"
+    aliases       = ["sam@company2.com"]
+    member_of     = ["info-biz1", "info-biz2"]
+  }
+}
