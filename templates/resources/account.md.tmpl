@@ -1,0 +1,33 @@
+---
+page_title: "{{.Name}} Resource - {{.ProviderName}}"
+subcategory: ""
+description: |-
+  {{ .Description | plainmarkdown | trimspace | prefixlines "  " }}
+---
+
+# {{.Name}} (Resource)
+
+{{ .Description | trimspace }}
+
+~> `password` is **write-only** and is never read back from the API. Terraform
+   tracks it in state only to detect changes. Pass it via a sensitive variable
+   and avoid committing it to version control.
+
+-> `member_of` contains plain group name strings, not resource references, so
+   Terraform cannot infer the dependency automatically. Always add
+   `depends_on = [stalwart_group.this]` to ensure groups exist before accounts
+   are created and are not destroyed while accounts still reference them.
+
+## Example Usage
+
+{{ tffile (printf "examples/resources/%s/resource.tf" .Name) }}
+
+{{ .SchemaMarkdown | trimspace }}
+
+## Import
+
+Accounts can be imported using the account name:
+
+```shell
+terraform import {{.Name}}.example alice
+```
