@@ -1,0 +1,33 @@
+---
+page_title: "Provider: Stalwart"
+description: |-
+  {{ .Description | plainmarkdown | trimspace | prefixlines "  " }}
+---
+
+# Stalwart Provider
+
+{{ .Description | trimspace }}
+
+## Resource creation order
+
+```
+stalwart_domain
+     │
+     ├──► stalwart_dkim              (references domain)
+     │         │
+     │         └──► stalwart_dns_records  (data source, reads after DKIM exists)
+     │
+     └──► stalwart_group             (primary_email / aliases live on this domain)
+               │
+               └──► stalwart_account (member_of references group names)
+```
+
+Terraform resolves this automatically from resource references. Where plain
+strings are used instead of resource references (e.g. `member_of`, or group
+email addresses supplied via variables), add an explicit `depends_on`.
+
+## Example Usage
+
+{{ tffile "examples/provider/provider.tf" }}
+
+{{ .SchemaMarkdown | trimspace }}

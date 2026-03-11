@@ -1,0 +1,28 @@
+---
+page_title: "{{.Name}} Resource - {{.ProviderName}}"
+subcategory: ""
+description: |-
+  {{ .Description | plainmarkdown | trimspace | prefixlines "  " }}
+---
+
+# {{.Name}} (Resource)
+
+{{ .Description | trimspace }}
+
+-> The provider **refuses to delete** a domain that still has users or groups
+   with email addresses on it. It will list the offending principals by name so
+   you know exactly what to remove first.
+
+## Example Usage
+
+{{ tffile (printf "examples/resources/%s/resource.tf" .Name) }}
+
+{{ .SchemaMarkdown | trimspace }}
+
+## Import
+
+Domains can be imported using the domain name:
+
+```shell
+terraform import {{.Name}}.example example.com
+```

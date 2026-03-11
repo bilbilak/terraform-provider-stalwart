@@ -1,0 +1,19 @@
+---
+page_title: "{{.Name}} Data Source - {{.ProviderName}}"
+subcategory: ""
+description: |-
+  {{ .Description | plainmarkdown | trimspace | prefixlines "  " }}
+---
+
+# {{.Name}} (Data Source)
+
+{{ .Description | trimspace }}
+
+-> Credentials are never exposed by this data source. Use the `stalwart_account`
+   resource to manage passwords.
+
+## Example Usage
+
+{{ tffile (printf "examples/data-sources/%s/data-source.tf" .Name) }}
+
+{{ .SchemaMarkdown | trimspace }}

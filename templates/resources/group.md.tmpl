@@ -1,0 +1,31 @@
+---
+page_title: "{{.Name}} Resource - {{.ProviderName}}"
+subcategory: ""
+description: |-
+  {{ .Description | plainmarkdown | trimspace | prefixlines "  " }}
+---
+
+# {{.Name}} (Resource)
+
+{{ .Description | trimspace }}
+
+-> **Membership is declared on the user side** via `stalwart_user.member_of`,
+   not on the group. Groups must therefore be created before the users that join them.
+
+-> When group email addresses come from a variable rather than a direct
+   `stalwart_domain` resource reference, add `depends_on = [stalwart_domain.this]`
+   so Terraform knows to create the domain first and destroy the group before the domain.
+
+## Example Usage
+
+{{ tffile (printf "examples/resources/%s/resource.tf" .Name) }}
+
+{{ .SchemaMarkdown | trimspace }}
+
+## Import
+
+Groups can be imported using the group name:
+
+```shell
+terraform import {{.Name}}.example info-example
+```
